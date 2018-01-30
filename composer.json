@@ -17,7 +17,7 @@
   },
   "autoload": {
     "psr-4": {
-      "IvobaOxid\\JsonLd\\": "../../../source/modules/ivoba/more"
+      "IvobaOxid\\More\\": "../../../source/modules/ivoba/more"
     }
   }
 }
