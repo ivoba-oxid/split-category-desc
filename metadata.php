@@ -23,30 +23,22 @@
 
 $sMetadataVersion = '2';
 $aModule          = [
-    'id'          => 'ivoba_more',
-    'title'       => '<strong>Ivo Bathke</strong>:  <i>More Link</i>',
-    'description' => 'Split category text by adding a more token.',
+    'id'          => 'ivoba_split_category_desc',
+    'title'       => '<strong>Ivo Bathke</strong>:  <i>Split Category Desc</i>',
+    'description' => [
+        'de' => 'Kategorie Text aufteilen mit einem ###more### token.',
+        'en' => 'Split category text by adding a ###more### token.'
+    ],
     'thumbnail'   => 'ivoba-oxid.png',
     'version'     => '1.0',
     'author'      => 'Ivo Bathke',
     'email'       => 'ivo.bathke@gmail.com',
-    'url'         => 'https://oxid.ivo-bathke.name#more',
-    'extend'      => [\OxidEsales\Eshop\Application\Model\Category::class => \IvobaOxid\More\Application\Model\Category::class],
+    'url'         => 'https://oxid.ivo-bathke.name#split-category-desc',
+    'extend'      => [\OxidEsales\Eshop\Application\Model\Category::class => \IvobaOxid\SplitCategoryDesc\Application\Model\Category::class],
     'blocks'      => [
-        ['template' => 'page/list/list.tpl', 'block' => 'page_list_listbody', 'file' => '/views/blocks/more_category_desc.tpl']
+        ['template' => 'page/list/list.tpl', 'block' => 'page_list_listbody', 'file' => '/views/blocks/split_category_desc.tpl']
     ],
     'settings'    => [
-        ['group' => 'ivoba_more_main', 'name' => 'ivoba_more_token', 'type' => 'str', 'value' => '###more###'],
+        ['group' => 'ivoba_split_category_desc_main', 'name' => 'ivoba_split_category_desc_token', 'type' => 'str', 'value' => '###more###'],
     ],
 ];
-
-/*
- * find in list.tpl (Flow):
- * [{if $actCategory->oxcategories__oxlongdesc->value && $oPageNavigation->actPage == 1}]
-            <div id="catLongDescLocator" class="categoryDescription">[{oxeval var=$actCategory->oxcategories__oxlongdesc}]</div>
-            <hr/>
-   [{/if}]
-
-   replace wit:
-
- */

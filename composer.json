@@ -1,9 +1,9 @@
 {
-  "name": "ivoba-oxid/more",
+  "name": "ivoba-oxid/split-category-desc",
   "description": "Split category description module for Oxid eShop v6",
   "type": "oxideshop-module",
   "keywords": ["oxid", "modules", "eShop"],
-  "homepage": "https://github.com/ivoba-oxid/more",
+  "homepage": "https://github.com/ivoba-oxid/split-category-desc",
   "license": [
     "MIT"
   ],
@@ -12,12 +12,12 @@
   },
   "extra": {
     "oxideshop": {
-      "target-directory": "ivoba/more"
+      "target-directory": "ivoba/split-category-desc"
     }
   },
   "autoload": {
     "psr-4": {
-      "IvobaOxid\\More\\": "../../../source/modules/ivoba/more"
+      "IvobaOxid\\SplitCategoryDesc\\": "../../../source/modules/ivoba/split-category-desc"
     }
   }
 }

@@ -1,44 +1,29 @@
 <?php
 
-namespace IvobaOxid\More\Application\Model;
+namespace IvobaOxid\SplitCategoryDesc\Application\Model;
 
-use OxidEsales\Eshop\Application\Model\Registry;
+use OxidEsales\Eshop\Core\Field;
+use OxidEsales\Eshop\Core\Registry;
 
 class Category extends Category_parent
 {
-    private $excerptDesc = null;
-    private $moreDesc = null;
-    private $hasMoreDesc = false;
+    const CONFIG_PARAM = 'ivoba_split_category_desc_token';
 
-    public function getLongDesc(): string
+    protected $originalLongDesc = null;
+    protected $moreDesc = '';
+    protected $hasMoreDesc = false;
+
+    public function getLongDesc()
     {
-        $sDesc = $this->oxcategories__oxlongdesc->value;
+        $sDesc = $this->originalLongDesc;
 
         if ($sDesc) {
-            //todo fetch token from config
-//            $token = $slOxid = Registry::getConfig()->getConfigParam('ivoba_more_token');
-//            var_dump($token);
-//            exit;
+            $token = $slOxid = Registry::getConfig()->getConfigParam(self::CONFIG_PARAM);
 
-            return str_replace('<p class="mg-hidden">###more###</p>', '', $sDesc);
+            return str_replace($token, '', $sDesc);
         }
 
-        return '';
-    }
-
-    /**
-     * @return string
-     */
-    public function getExcerptDesc(): string
-    {
-        if ($this->excerptDesc === null) {
-            $this->_splitDescription();
-        }
-        if ($this->hasMoreDesc) {
-            return $this->excerptDesc;
-        }
-
-        return '';
+        return parent::getLongDesc();
     }
 
     /**
@@ -46,19 +31,7 @@ class Category extends Category_parent
      */
     public function getMoreDesc(): string
     {
-        if ($this->moreDesc) {
-            return $this->moreDesc;
-        }
-
-        if ($this->moreDesc === null) {
-            $this->_splitDescription();
-        }
-
-        if ($this->hasMoreDesc) {
-            return $this->moreDesc;
-        }
-
-        return '';
+        return $this->moreDesc;
     }
 
     /**
@@ -69,15 +42,24 @@ class Category extends Category_parent
         return $this->hasMoreDesc;
     }
 
-//    public function __get($sName)
-//    {
-//        var_dump($sName);exit;
-//        if ($sName === 'oxcategories__oxlongdesc') {
-//            return $this->getExcerptDesc();
-//        }
-//
-//        return parent::__get($sName);
-//    }
+    /**
+     * @return null|string
+     */
+    public function getOriginalLongDesc()
+    {
+        return $this->originalLongDesc;
+    }
+
+    public function load($sOXID)
+    {
+        $ret = parent::load($sOXID);
+
+        if ($ret) {
+            $this->_splitDescription();
+        }
+
+        return $ret;
+    }
 
     protected function _splitDescription()
     {
@@ -85,15 +67,16 @@ class Category extends Category_parent
         $this->hasMoreDesc = false;
 
         if ($sDesc) {
-            //todo fetch token from config
-            $aDesc             = explode('<p class="mg-hidden">###more###</p>', $sDesc);
-            $this->excerptDesc = $aDesc[0];
+            $token = $slOxid = Registry::getConfig()->getConfigParam(self::CONFIG_PARAM);
+            $aDesc = explode($token, $sDesc);
             if (count($aDesc) > 1) {
-                $this->hasMoreDesc = true;
-                $this->moreDesc    = $aDesc[1];
+                $this->hasMoreDesc              = true;
+                $string                         = $aDesc[0].'<p class="split-category-desc"><a class="btn btn-primary" href="#moreCatDesc">'.
+                    Registry::getLang()->translateString('IVOBA_SPLIT_CATEGORY_DESC_READMORE').
+                    '</a></p>';
+                $this->oxcategories__oxlongdesc = new Field($string);
+                $this->moreDesc = $aDesc[1];
             }
-        } else {
-            $this->excerptDesc = $sDesc;
         }
     }
 
