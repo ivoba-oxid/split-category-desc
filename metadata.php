@@ -36,7 +36,7 @@ $aModule          = [
     'url'         => 'https://oxid.ivo-bathke.name#split-category-desc',
     'extend'      => [\OxidEsales\Eshop\Application\Model\Category::class => \IvobaOxid\SplitCategoryDesc\Application\Model\Category::class],
     'blocks'      => [
-        ['template' => 'page/list/list.tpl', 'block' => 'page_list_listbody', 'file' => '/views/blocks/split_category_desc.tpl']
+        ['template' => 'page/list/list.tpl', 'block' => 'page_list_listbody', 'file' => '/Application/views/blocks/split_category_desc.tpl']
     ],
     'settings'    => [
         ['group' => 'ivoba_split_category_desc_main', 'name' => 'ivoba_split_category_desc_token', 'type' => 'str', 'value' => '###more###'],
