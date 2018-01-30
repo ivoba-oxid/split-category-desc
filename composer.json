@@ -1,0 +1,23 @@
+{
+  "name": "ivoba-oxid/more",
+  "description": "Split category description module for Oxid eShop v6",
+  "type": "oxideshop-module",
+  "keywords": ["oxid", "modules", "eShop"],
+  "homepage": "https://github.com/ivoba-oxid/more",
+  "license": [
+    "MIT"
+  ],
+  "require": {
+    "oxid-esales/oxideshop-ce": "^v6.0"
+  },
+  "extra": {
+    "oxideshop": {
+      "target-directory": "ivoba/more"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "IvobaOxid\\JsonLd\\": "../../../source/modules/ivoba/more"
+    }
+  }
+}
