@@ -54,7 +54,7 @@ class Category extends Category_parent
     {
         $ret = parent::load($sOXID);
 
-        if ($ret) {
+        if ($ret && $this->isAdmin() === false) {
             $this->_splitDescription();
         }
 
