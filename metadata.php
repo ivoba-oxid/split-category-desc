@@ -27,7 +27,7 @@ $aModule          = [
     'title'       => '<strong>Ivo Bathke</strong>:  <i>Split Category Desc</i>',
     'description' => [
         'de' => 'Kategorie Text aufteilen mit einem ###more### token.',
-        'en' => 'Split category text by adding a ###more### token.'
+        'en' => 'Split category text by adding a ###more### token.',
     ],
     'thumbnail'   => 'ivoba-oxid.png',
     'version'     => '1.0',
@@ -36,9 +36,19 @@ $aModule          = [
     'url'         => 'https://oxid.ivo-bathke.name#split-category-desc',
     'extend'      => [\OxidEsales\Eshop\Application\Model\Category::class => \IvobaOxid\SplitCategoryDesc\Application\Model\Category::class],
     'blocks'      => [
-        ['template' => 'page/list/list.tpl', 'block' => 'page_list_listbody', 'file' => '/Application/views/blocks/split_category_desc.tpl']
+        [
+            'template' => 'page/list/list.tpl',
+            'block'    => 'page_list_listbody',
+            'file'     => '/Application/views/blocks/split_category_desc.tpl',
+            'position' => 2 //in case of using another module (f.e ivoba-oxid/ivoba-manufacturer-description) that also extends this block we move it to later position
+        ],
     ],
     'settings'    => [
-        ['group' => 'ivoba_split_category_desc_main', 'name' => 'ivoba_split_category_desc_token', 'type' => 'str', 'value' => '###more###'],
+        [
+            'group' => 'ivoba_split_category_desc_main',
+            'name'  => 'ivoba_split_category_desc_token',
+            'type'  => 'str',
+            'value' => '###more###',
+        ],
     ],
 ];
