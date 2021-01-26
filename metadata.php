@@ -21,7 +21,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-$sMetadataVersion = '2';
+$sMetadataVersion = '2.0';
 $aModule          = [
     'id'          => 'ivoba_split_category_desc',
     'title'       => '<strong>Ivo Bathke</strong>:  <i>Split Category Desc</i>',
