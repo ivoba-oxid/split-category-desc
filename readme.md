@@ -26,7 +26,7 @@ Use ```$actCat->getLongDesc()``` for the full long description.
 ## Requirements
 - UTF-8
 - PHP >= 7
-- Oxid eShop >= CE 6
+- Oxid eShop >= CE 7
 
 ## License MIT
 
