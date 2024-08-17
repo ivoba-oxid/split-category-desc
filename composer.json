@@ -10,14 +10,9 @@
   "require": {
     "oxid-esales/oxideshop-ce": "^v7"
   },
-  "extra": {
-    "oxideshop": {
-      "target-directory": "ivoba/split-category-desc"
-    }
-  },
   "autoload": {
     "psr-4": {
-      "IvobaOxid\\SplitCategoryDesc\\": "../../../source/modules/ivoba/split-category-desc"
+      "IvobaOxid\\SplitCategoryDesc\\": "."
     }
   }
 }
