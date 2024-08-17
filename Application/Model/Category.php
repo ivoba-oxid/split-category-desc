@@ -4,6 +4,8 @@ namespace IvobaOxid\SplitCategoryDesc\Application\Model;
 
 use OxidEsales\Eshop\Core\Field;
 use OxidEsales\Eshop\Core\Registry;
+use OxidEsales\EshopCommunity\Internal\Container\ContainerFactory;
+use OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\Bridge\ModuleSettingBridgeInterface;
 
 class Category extends Category_parent
 {
@@ -18,7 +20,7 @@ class Category extends Category_parent
         $sDesc = $this->originalLongDesc;
 
         if ($sDesc) {
-            $token = $slOxid = Registry::getConfig()->getConfigParam(self::CONFIG_PARAM);
+            $token = $this->getToken();
 
             return str_replace($token, '', $sDesc);
         }
@@ -55,29 +57,40 @@ class Category extends Category_parent
         $ret = parent::load($sOXID);
 
         if ($ret && $this->isAdmin() === false) {
-            $this->_splitDescription();
+            $this->splitDescription();
         }
 
         return $ret;
     }
 
-    protected function _splitDescription()
+    protected function splitDescription()
     {
-        $sDesc             = $this->oxcategories__oxlongdesc->value;
+        $sDesc = $this->oxcategories__oxlongdesc->value;
         $this->hasMoreDesc = false;
 
         if ($sDesc) {
-            $token = Registry::getConfig()->getConfigParam(self::CONFIG_PARAM);
+            $token = $this->getToken();
             $aDesc = explode($token, $sDesc);
             if (count($aDesc) > 1) {
-                $this->hasMoreDesc              = true;
-                $string                         = $aDesc[0].'<p class="split-category-desc"><a class="btn btn-primary" href="#moreCatDesc">'.
-                    Registry::getLang()->translateString('IVOBA_SPLIT_CATEGORY_DESC_READMORE').
+                $this->hasMoreDesc = true;
+                $string = $aDesc[0] . '<p class="split-category-desc"><a class="btn btn-primary" href="#moreCatDesc">' .
+                    Registry::getLang()->translateString('IVOBA_SPLIT_CATEGORY_DESC_READMORE') .
                     '</a></p>';
                 $this->oxcategories__oxlongdesc = new Field($string);
                 $this->moreDesc = $aDesc[1];
             }
         }
+    }
+
+    /**
+     * @return mixed
+     */
+    private function getToken()
+    {
+        $moduleSettingBridge = ContainerFactory::getInstance()
+            ->getContainer()
+            ->get(ModuleSettingBridgeInterface::class);
+        return $moduleSettingBridge->get(self::CONFIG_PARAM);
     }
 
 }
