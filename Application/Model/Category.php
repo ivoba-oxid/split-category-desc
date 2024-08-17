@@ -67,7 +67,7 @@ class Category extends Category_parent
         $this->hasMoreDesc = false;
 
         if ($sDesc) {
-            $token = $slOxid = Registry::getConfig()->getConfigParam(self::CONFIG_PARAM);
+            $token = Registry::getConfig()->getConfigParam(self::CONFIG_PARAM);
             $aDesc = explode($token, $sDesc);
             if (count($aDesc) > 1) {
                 $this->hasMoreDesc              = true;
