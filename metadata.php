@@ -39,7 +39,7 @@ $aModule          = [
         [
             'template' => 'page/list/list.tpl',
             'block'    => 'page_list_listbody',
-            'file'     => 'views/admin_smarty/blocks/split_category_desc.tpl',
+            'file'     => 'views/frontend/blocks/split_category_desc.tpl',
             'position' => 2 //in case of using another module (f.e ivoba-oxid/ivoba-manufacturer-description) that also extends this block we move it to later position
         ],
     ],
