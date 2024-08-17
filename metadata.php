@@ -34,7 +34,7 @@ $aModule          = [
     'author'      => 'Ivo Bathke',
     'email'       => 'ivo.bathke@gmail.com',
     'url'         => 'https://oxid.ivo-bathke.name#split-category-desc',
-    'extend'      => [\OxidEsales\Eshop\Application\Model\Category::class => \IvobaOxid\SplitCategoryDesc\src\Application\Model\Category::class],
+    'extend'      => [\OxidEsales\Eshop\Application\Model\Category::class => \IvobaOxid\SplitCategoryDesc\Application\Model\Category::class],
     'blocks'      => [
         [
             'template' => 'page/list/list.tpl',
