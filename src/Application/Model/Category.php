@@ -90,8 +90,8 @@ class Category extends Category_parent
     {
         $moduleSettingBridge = ContainerFactory::getInstance()
             ->getContainer()
-            ->get(ModuleSettingBridgeInterface::class, Module::MODULE_ID);
-        return $moduleSettingBridge->get(self::CONFIG_PARAM);
+            ->get(ModuleSettingBridgeInterface::class);
+        return $moduleSettingBridge->get(self::CONFIG_PARAM, Module::MODULE_ID);
     }
 
 }
