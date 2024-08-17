@@ -1,7 +1,8 @@
 <?php
 
-namespace IvobaOxid\SplitCategoryDesc\Application\Model;
+namespace IvobaOxid\SplitCategoryDesc\src\Application\Model;
 
+use IvobaOxid\SplitCategoryDesc\Module;
 use OxidEsales\Eshop\Core\Field;
 use OxidEsales\Eshop\Core\Registry;
 use OxidEsales\EshopCommunity\Internal\Container\ContainerFactory;
@@ -89,7 +90,7 @@ class Category extends Category_parent
     {
         $moduleSettingBridge = ContainerFactory::getInstance()
             ->getContainer()
-            ->get(ModuleSettingBridgeInterface::class);
+            ->get(ModuleSettingBridgeInterface::class, Module::MODULE_ID);
         return $moduleSettingBridge->get(self::CONFIG_PARAM);
     }
 

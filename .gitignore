@@ -2,3 +2,4 @@
 vendor
 composer.lock
 .phpstorm-oxid.meta.php
+.idea
