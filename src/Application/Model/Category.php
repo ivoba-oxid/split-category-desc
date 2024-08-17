@@ -1,6 +1,6 @@
 <?php
 
-namespace IvobaOxid\SplitCategoryDesc\src\Application\Model;
+namespace IvobaOxid\SplitCategoryDesc\Application\Model;
 
 use IvobaOxid\SplitCategoryDesc\Module;
 use OxidEsales\Eshop\Core\Field;
