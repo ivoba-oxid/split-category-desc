@@ -1,4 +1,4 @@
-# Split category description module for Oxid eShop v6
+# Split category description module for Oxid eShop v7
 
 Split your category description by a ###more### token and
 show description above and below the product list.
@@ -25,7 +25,7 @@ Use ```$actCat->getLongDesc()``` for the full long description.
 
 ## Requirements
 - UTF-8
-- PHP >= 7
+- PHP >= 8
 - Oxid eShop >= CE 7
 
 ## License MIT
