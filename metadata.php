@@ -30,7 +30,7 @@ $aModule          = [
         'en' => 'Split category text by adding a ###more### token.',
     ],
     'thumbnail'   => 'ivoba-oxid.png',
-    'version'     => '1.0',
+    'version'     => '2.0',
     'author'      => 'Ivo Bathke',
     'email'       => 'ivo.bathke@gmail.com',
     'url'         => 'https://oxid.ivo-bathke.name#split-category-desc',
