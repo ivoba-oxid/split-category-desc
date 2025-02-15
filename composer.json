@@ -8,7 +8,7 @@
     "MIT"
   ],
   "require": {
-    "oxid-esales/oxideshop-ce": "^v7"
+    "oxid-esales/oxideshop-ce": "^v7.1"
   },
   "autoload": {
     "psr-4": {

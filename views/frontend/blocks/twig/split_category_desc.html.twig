@@ -1,0 +1,7 @@
+{% extends "page/list/list.html.twig" %}
+
+{% if actCategory.oxcategories__oxlongdesc.value and actCategory.hasMoreDesc %}
+    <div id="moreCatDesc" class="category-more-description">
+        {{ actCategory.getMoreDesc() }}
+    </div>
+{% endif %}
