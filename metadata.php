@@ -24,15 +24,15 @@
 $sMetadataVersion = '2.0';
 $aModule          = [
     'id'          => \IvobaOxid\SplitCategoryDesc\Module::MODULE_ID,
-    'title'       => '<strong>Ivo Bathke</strong>:  <i>Split Category Desc</i>',
+    'title'       => 'Ivo Bathke: Split Category Desc',
     'description' => [
         'de' => 'Kategorie Text aufteilen mit einem ###more### token.',
         'en' => 'Split category text by adding a ###more### token.',
     ],
     'thumbnail'   => 'ivoba-oxid.png',
-    'version'     => '2.0',
+    'version'     => '2.1',
     'author'      => 'Ivo Bathke',
-    'email'       => 'ivo.bathke@gmail.com',
+    'email'       => 'hello(at)ivo-bathke.name',
     'url'         => 'https://oxid.ivo-bathke.name#split-category-desc',
     'extend'      => [\OxidEsales\Eshop\Application\Model\Category::class => \IvobaOxid\SplitCategoryDesc\Application\Model\Category::class],
     'blocks'      => [
