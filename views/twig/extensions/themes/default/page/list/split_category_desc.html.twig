@@ -1,7 +1,17 @@
 {% extends "page/list/list.html.twig" %}
 
-{% if actCategory.oxcategories__oxlongdesc.value and actCategory.hasMoreDesc %}
-    <div id="moreCatDesc" class="category-more-description">
-        {{ actCategory.getMoreDesc() }}
-    </div>
-{% endif %}
+{% block page_list_listbody %}
+    {{ parent() }}
+    {% if actCategory.oxcategories__oxlongdesc.value and actCategory.hasMoreDesc %}
+        <div class="bg-white container-xxl">
+            <div class="row">
+                <div class="col-12">
+                    <br>
+                    <div id="moreCatDesc" class="category-more-description">
+                        {{ actCategory.getMoreDesc()|raw }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
